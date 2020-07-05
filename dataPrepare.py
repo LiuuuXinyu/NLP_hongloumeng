@@ -2,6 +2,7 @@ import re
 import jieba
 import string
 import collections as coll
+jieba.load_userdict('.\\manual-dict.txt.txt') 
 
 class textProcesser:
 	def __init__(self):
