@@ -2,7 +2,7 @@ import re
 import jieba
 import string
 import collections as coll
-jieba.load_userdict('.\\manual-dict.txt.txt') 
+jieba.load_userdict('.\\manual-dict.txt') 
 
 class textProcesser:
 	def __init__(self):
@@ -12,7 +12,7 @@ class textProcesser:
 		'''
 		注释预留位
 		'''
-		HLM = open('./红楼梦.txt',encoding='utf-8')
+		HLM = open('.\\红楼梦.txt',encoding='utf-8')
 		each_line = HLM.readline()
 		chapter_count = 0
 		chapter_text = ''
