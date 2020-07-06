@@ -2,7 +2,7 @@ import re
 import jieba
 import string
 import collections as coll
-jieba.load_userdict('.\\manual-dict.txt') 
+jieba.load_userdict('./manual-dict.txt') 
 
 class textProcesser:
 	def __init__(self):
@@ -12,7 +12,7 @@ class textProcesser:
 		'''
 		注释预留位
 		'''
-		HLM = open('.\\红楼梦.txt',encoding='utf-8')
+		HLM = open('./红楼梦.txt',encoding='utf-8')
 		each_line = HLM.readline()
 		chapter_count = 0
 		chapter_text = ''
@@ -22,7 +22,7 @@ class textProcesser:
 			#print(each_line)
 			if re.findall(complied_rule,each_line):
 				file_name = 'chap'+str(chapter_count)#第xxx回
-				file_out = open('.\\HLMchapter\\'+file_name+'.txt','a',encoding = 'utf-8')
+				file_out = open('./HLMchapter/'+file_name+'.txt','a',encoding = 'utf-8')
 				file_out.write(chapter_text)
 				chapter_count += 1
 				file_out.close()
@@ -32,14 +32,14 @@ class textProcesser:
 			each_line = HLM.readline()
 
 		file_name = 'chap'+str(120)#第120回
-		file_out = open('.\\HLMchapter\\'+file_name+'.txt','a',encoding = 'utf-8')
+		file_out = open('./HLMchapter/'+file_name+'.txt','a',encoding = 'utf-8')
 		file_out.write(chapter_text)
 		HLM.close()
 
 	# 对单个章节的分词
 	def segmentation(self,text,text_count):
 		file_name = 'chap'+str(text_count)+'-words.txt'
-		file_out = open('.\\HLMChapterWordSegmentation\\'+file_name,'a',encoding='utf-8')
+		file_out = open('./HLMChapterWordSegmentation/'+file_name,'a',encoding='utf-8')
 		delset = string.punctuation
 		line=text.readline()
 
@@ -59,7 +59,7 @@ class textProcesser:
 	def doChapterWordSegmentation(self):
 		for loop in range(1,121):
 			file_name = 'chap'+str(loop)+'.txt'
-			file_in = open('.\\HLMChapter\\'+file_name,'r',encoding = 'utf-8')
+			file_in = open('./HLMChapter/'+file_name,'r',encoding = 'utf-8')
 			self.segmentation(file_in,loop)
 			file_in.close()
 
@@ -75,7 +75,7 @@ class textProcesser:
 		words_dict = coll.Counter(words) # 生成词频字典
 
 		file_name = 'chap'+str(textID)+'-wordcount.txt'
-		file_out = open('.\\HLMChapterWordCount\\'+file_name,'a',encoding = 'utf-8')
+		file_out = open('./HLMChapterWordCount/'+file_name,'a',encoding = 'utf-8')
 
 		# 排序后写入文本
 		sorted_result = sorted(words_dict.items(),key = lambda d:d[1],reverse = True)
@@ -90,7 +90,7 @@ class textProcesser:
 	def do_wordcount(self):
 		for loop in range(1,121):
 			file_name = 'chap'+str(loop)+'-words.txt'
-			file_in = open('.\\HLMChapterWordSegmentation\\'+file_name,'r',encoding = 'utf-8')
+			file_in = open('./HLMChapterWordSegmentation/'+file_name,'r',encoding = 'utf-8')
 			line = file_in.readline()
 			text = ''
 			while line:

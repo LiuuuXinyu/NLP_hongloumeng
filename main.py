@@ -13,7 +13,7 @@ class result:
 
     def have_Xtrainset(self):
         Xtrainset = x_train
-        Xtrainset = np.vstack((Xtrainset[19:29],Xtrainset[109:119]))
+        Xtrainset = np.vstack((Xtrainset[9:29],Xtrainset[99:119]))
         return(Xtrainset)
 
     def as_num(self,x):
@@ -22,7 +22,7 @@ class result:
 
     def built_model(self):
         x_trainset = self.have_Xtrainset()
-        y_classset = np.repeat(np.array([1,2]),[10,10])
+        y_classset = np.repeat(np.array([1,2]),[20,20])
 
         NBclf = MultinomialNB()
         NBclf.fit(x_trainset,y_classset) # 建立模型

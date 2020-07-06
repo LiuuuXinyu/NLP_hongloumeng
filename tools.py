@@ -5,7 +5,7 @@ def txt2matrix():
 	'''
 	生成120*shape的矩阵，为频率矩阵
 	'''
-	featurevector_dir = '.\\红楼梦-特征向量.txt'
+	featurevector_dir = './红楼梦-特征向量.txt'
 	feature_data = open(featurevector_dir,'r',encoding = 'utf-8')
 	feature_list = list(feature_data.read().split())
 	print("feature_list",feature_list)
@@ -13,7 +13,7 @@ def txt2matrix():
 	matrix = np.zeros((120,len(feature_list)))
 
 	for k in range(1,121):
-		file_dir = '.\\HLMChapterWordCount\\chap'+str(k)+'-wordcount.txt'
+		file_dir = './HLMChapterWordCount/chap'+str(k)+'-wordcount.txt'
 		file_data = open(file_dir,'r',encoding = 'utf-8')
 		lines = file_data.readlines()
 		for line in lines:
